@@ -13,7 +13,7 @@ export default function decorate(block) {
     const links = li.querySelectorAll('a');
     if (links.length === 1) {
       const href = links[0].getAttribute('href');
-      li.classList.add('cards-card--linked');
+      li.classList.add('cards-card-linked');
       li.addEventListener('click', () => { if (href) window.location.href = href; });
     }
     ul.append(li);

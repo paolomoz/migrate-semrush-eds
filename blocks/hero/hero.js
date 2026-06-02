@@ -15,12 +15,12 @@ export default function decorate(block) {
   const form = document.createElement('div');
   form.className = 'hero-search';
   form.innerHTML = `
-    <span class="hero-search__field">
-      <span class="hero-search__icon" aria-hidden="true"></span>
+    <span class="hero-search-field">
+      <span class="hero-search-icon" aria-hidden="true"></span>
       <input type="text" placeholder="Enter your website" aria-label="Enter your website">
-      <span class="hero-search__geo">US</span>
+      <span class="hero-search-geo">US</span>
     </span>
-    <button type="button" class="hero-search__btn">${ctaText}</button>`;
+    <button type="button" class="hero-search-btn">${ctaText}</button>`;
   copy.append(form);
 
   const media = document.createElement('div');

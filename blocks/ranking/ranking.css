@@ -6,7 +6,12 @@
   padding: 14px 28px;
 }
 
-.ranking-list { list-style: none; margin: 0; padding: 0; counter-reset: rank; }
+.ranking-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: rank;
+}
 
 .ranking-row {
   display: grid;
@@ -17,10 +22,21 @@
   border-bottom: 1px solid rgb(255 255 255 / 8%);
 }
 
-.ranking-row:last-child { border-bottom: 0; }
+.ranking-row:last-child {
+  border-bottom: 0;
+}
 
-.ranking-rank { font-family: var(--display); color: rgb(255 255 255 / 45%); font-size: 14px; }
-.ranking-brand { font-weight: 600; color: #fff; font-size: 16px; }
+.ranking-rank {
+  font-family: var(--display);
+  color: rgb(255 255 255 / 45%);
+  font-size: 14px;
+}
+
+.ranking-brand {
+  font-weight: 600;
+  color: #fff;
+  font-size: 16px;
+}
 
 .ranking-bar {
   height: 8px;
@@ -36,9 +52,19 @@
   background: linear-gradient(90deg, var(--lav), #8ce0c0);
 }
 
-.ranking-share { text-align: right; font-family: var(--display); font-weight: 600; color: #fff; }
+.ranking-share {
+  text-align: right;
+  font-family: var(--display);
+  font-weight: 600;
+  color: #fff;
+}
 
 @media (width <= 700px) {
-  .ranking-row { grid-template-columns: 24px 1fr 44px; }
-  .ranking-bar { display: none; }
+  .ranking-row {
+    grid-template-columns: 24px 1fr 44px;
+  }
+
+  .ranking-bar {
+    display: none;
+  }
 }

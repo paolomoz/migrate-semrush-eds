@@ -1,0 +1,6 @@
+[
+  { "id": "cards", "components": ["card"] },
+  { "id": "stats", "components": ["stat"] },
+  { "id": "ranking", "components": ["ranking-row"] },
+  { "id": "logos", "components": ["logo"] }
+]

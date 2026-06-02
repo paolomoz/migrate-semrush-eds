@@ -14,7 +14,9 @@
   border-right: 1px solid var(--line);
 }
 
-.stats-item:last-child { border-right: 0; }
+.stats-item:last-child {
+  border-right: 0;
+}
 
 .stats-num {
   display: flex;
@@ -29,10 +31,12 @@
 }
 
 .stats-arrow {
-  width: 0.5em; height: 0.5em; margin-top: 0.12em; flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  margin-top: 0.12em;
+  flex: none;
   background: var(--lav);
   mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M7 17L17 7M9 7h8v8"/></svg>') center / contain no-repeat;
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M7 17L17 7M9 7h8v8"/></svg>') center / contain no-repeat;
 }
 
 .stats-label {
@@ -52,11 +56,23 @@
 }
 
 @media (width <= 900px) {
-  .stats.block .stats-list { grid-template-columns: repeat(2, 1fr); }
-  .stats-item:nth-child(2n) { border-right: 0; }
+  .stats.block .stats-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-item:nth-child(2n) {
+    border-right: 0;
+  }
 }
 
 @media (width <= 520px) {
-  .stats.block .stats-list { grid-template-columns: 1fr; }
-  .stats-item { border-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+  .stats.block .stats-list {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-item {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 28px;
+  }
 }

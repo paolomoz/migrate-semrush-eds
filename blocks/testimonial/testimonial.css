@@ -1,7 +1,13 @@
 /* testimonial */
-.testimonial.block { max-width: 920px; margin-inline: auto; text-align: center; }
+.testimonial.block {
+  max-width: 920px;
+  margin-inline: auto;
+  text-align: center;
+}
 
-.testimonial-fig { margin: 0; }
+.testimonial-fig {
+  margin: 0;
+}
 
 .testimonial-quote {
   font-family: var(--display);
@@ -13,9 +19,17 @@
   margin: 0 0 24px;
 }
 
-.testimonial.block .testimonial-quote { quotes: "“" "”"; }
-.testimonial-quote::before { content: open-quote; }
-.testimonial-quote::after { content: close-quote; }
+.testimonial.block .testimonial-quote {
+  quotes: "“" "”";
+}
+
+.testimonial-quote::before {
+  content: open-quote;
+}
+
+.testimonial-quote::after {
+  content: close-quote;
+}
 
 .testimonial-author {
   font-size: 15px;
@@ -24,5 +38,10 @@
   letter-spacing: 0.02em;
 }
 
-.section.dark .testimonial-quote { color: #fff; }
-.section.dark .testimonial-author { color: rgb(255 255 255 / 65%); }
+.section.dark .testimonial-quote {
+  color: #fff;
+}
+
+.section.dark .testimonial-author {
+  color: rgb(255 255 255 / 65%);
+}

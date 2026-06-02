@@ -1,0 +1,91 @@
+[
+  {
+    "id": "hero",
+    "fields": [
+      { "component": "reference", "valueType": "string", "name": "image", "label": "Product image / video poster", "multi": false },
+      { "component": "text-input", "valueType": "string", "name": "imageAlt", "label": "Image alt", "value": "" },
+      { "component": "text-input", "valueType": "string", "name": "headline", "label": "Headline" },
+      { "component": "text-area", "valueType": "string", "name": "subhead", "label": "Subhead" },
+      { "component": "aem-content", "valueType": "string", "name": "cta", "label": "Search button label" }
+    ]
+  },
+  {
+    "id": "promo",
+    "fields": [
+      { "component": "select", "name": "variant", "label": "Surface", "valueType": "string", "value": "semrush-one",
+        "options": [{ "name": "Semrush One (lavender)", "value": "semrush-one" }, { "name": "Enterprise (dark)", "value": "enterprise" }] },
+      { "component": "reference", "valueType": "string", "name": "image", "label": "Media", "multi": false },
+      { "component": "text-input", "valueType": "string", "name": "imageAlt", "label": "Media alt", "value": "" },
+      { "component": "text-input", "valueType": "string", "name": "title", "label": "Title" },
+      { "component": "text-area", "valueType": "string", "name": "body", "label": "Body" },
+      { "component": "aem-content", "valueType": "string", "name": "cta", "label": "Call to action" }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      { "component": "select", "name": "classes", "label": "Variant", "valueType": "string", "value": "solutions",
+        "options": [{ "name": "Solutions (product grid)", "value": "solutions" }, { "name": "Resources (article grid)", "value": "resources" }] }
+    ]
+  },
+  {
+    "id": "card",
+    "fields": [
+      { "component": "reference", "valueType": "string", "name": "image", "label": "Image", "multi": false },
+      { "component": "text-input", "valueType": "string", "name": "imageAlt", "label": "Image alt", "value": "" },
+      { "component": "text-input", "valueType": "string", "name": "eyebrow", "label": "Category / eyebrow" },
+      { "component": "text-input", "valueType": "string", "name": "title", "label": "Title" },
+      { "component": "text-area", "valueType": "string", "name": "body", "label": "Body" },
+      { "component": "aem-content", "valueType": "string", "name": "link", "label": "Link" }
+    ]
+  },
+  {
+    "id": "stats",
+    "fields": []
+  },
+  {
+    "id": "stat",
+    "fields": [
+      { "component": "text-input", "valueType": "string", "name": "number", "label": "Number (e.g. 28B)" },
+      { "component": "text-input", "valueType": "string", "name": "label", "label": "Label" },
+      { "component": "text-area", "valueType": "string", "name": "description", "label": "Description" }
+    ]
+  },
+  {
+    "id": "ranking",
+    "fields": []
+  },
+  {
+    "id": "ranking-row",
+    "fields": [
+      { "component": "text-input", "valueType": "string", "name": "brand", "label": "Brand" },
+      { "component": "number", "valueType": "number", "name": "share", "label": "Share of voice (%)" }
+    ]
+  },
+  {
+    "id": "logos",
+    "fields": []
+  },
+  {
+    "id": "logo",
+    "fields": [
+      { "component": "reference", "valueType": "string", "name": "image", "label": "Logo", "multi": false },
+      { "component": "text-input", "valueType": "string", "name": "imageAlt", "label": "Brand name", "value": "" }
+    ]
+  },
+  {
+    "id": "testimonial",
+    "fields": [
+      { "component": "text-area", "valueType": "string", "name": "quote", "label": "Quote" },
+      { "component": "text-input", "valueType": "string", "name": "author", "label": "Attribution" }
+    ]
+  },
+  {
+    "id": "cta",
+    "fields": [
+      { "component": "text-input", "valueType": "string", "name": "title", "label": "Heading" },
+      { "component": "aem-content", "valueType": "string", "name": "primary", "label": "Primary button" },
+      { "component": "aem-content", "valueType": "string", "name": "secondary", "label": "Secondary button" }
+    ]
+  }
+]

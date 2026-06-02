@@ -15,12 +15,29 @@
   letter-spacing: -0.03em;
 }
 
-.promo-copy p { font-size: 19px; margin: 0 0 28px; }
-.promo-copy .button-wrapper { margin: 0; }
+.promo-copy p {
+  font-size: 19px;
+  margin: 0 0 28px;
+}
 
-.promo-media { border-radius: 18px; overflow: hidden; }
-.promo-media picture, .promo-media img { display: block; width: 100%; height: auto; }
-.promo-media:empty { display: none; }
+.promo-copy .button-wrapper {
+  margin: 0;
+}
+
+.promo-media {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.promo-media picture, .promo-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.promo-media:empty {
+  display: none;
+}
 
 /* variant: Semrush One (lavender) */
 .promo.semrush-one {
@@ -33,10 +50,23 @@
   color: #fff;
 }
 
-.promo.enterprise h2, .promo.enterprise h3 { color: #fff; }
-.promo.enterprise p { color: rgb(255 255 255 / 72%); }
-.promo.enterprise .button.primary { background: var(--lav); color: var(--ink); }
+.promo.enterprise h2, .promo.enterprise h3 {
+  color: #fff;
+}
+
+.promo.enterprise p {
+  color: rgb(255 255 255 / 72%);
+}
+
+.promo.enterprise .button.primary {
+  background: var(--lav);
+  color: var(--ink);
+}
 
 @media (width <= 900px) {
-  .promo.block { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; }
+  .promo.block {
+    grid-template-columns: 1fr;
+    padding: 40px 28px;
+    gap: 32px;
+  }
 }

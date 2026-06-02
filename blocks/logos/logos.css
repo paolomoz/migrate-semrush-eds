@@ -1,8 +1,15 @@
 /* logos — marquee trust strip */
-.logos-wrapper { max-width: none !important; }
-.section.logos-container { padding-block: 28px; }
+.logos-wrapper {
+  max-width: none !important;
+}
 
-.logos.block { overflow: hidden; }
+.section.logos-container {
+  padding-block: 28px;
+}
+
+.logos.block {
+  overflow: hidden;
+}
 
 .logos-viewport {
   display: flex;
@@ -10,7 +17,10 @@
   animation: logos-scroll 48s linear infinite;
 }
 
-.logos-track { display: flex; align-items: center; }
+.logos-track {
+  display: flex;
+  align-items: center;
+}
 
 .logos-item {
   display: inline-flex;
@@ -28,14 +38,29 @@
   transition: opacity .2s ease, filter .2s ease;
 }
 
-.logos.block:hover .logos-viewport { animation-play-state: paused; }
-.logos-item:hover img { opacity: 1; filter: none; }
+.logos.block:hover .logos-viewport {
+  animation-play-state: paused;
+}
+
+.logos-item:hover img {
+  opacity: 1;
+  filter: none;
+}
 
 @keyframes logos-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logos-viewport { animation: none; flex-wrap: wrap; justify-content: center; }
+  .logos-viewport {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
