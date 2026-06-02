@@ -113,6 +113,8 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
+  // overlay-mode pages (stardust:aem-import) inline their own chrome
+  if (document.querySelector('main')?.dataset?.overlay) return;
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';

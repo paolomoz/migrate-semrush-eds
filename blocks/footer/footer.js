@@ -6,6 +6,8 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
+  // overlay-mode pages (stardust:aem-import) inline their own chrome
+  if (document.querySelector('main')?.dataset?.overlay) return;
   // load footer as fragment
   const footerMeta = getMetadata('footer');
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';

@@ -1,0 +1,89 @@
+/* all ranges */
+@font-face {
+  font-family: 'Factor A Variable';
+  font-style: normal;
+  font-weight: 1 1800;
+  font-display: swap;
+  src: url("https://www.semrush.com/__static__/fonts/factor_a/v2/variable.woff2") format('woff2 supports variations'),
+    url("https://www.semrush.com/__static__/fonts/factor_a/v2/variable.woff2") format('woff2-variations'),
+    url("https://www.semrush.com/__static__/fonts/factor_a/v2/variable.woff2") format('woff2');
+}
+
+/* all ranges */
+@font-face {
+  font-family: 'Factor A';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("https://www.semrush.com/__static__/fonts/factor_a/v2/light.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Factor A';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://www.semrush.com/__static__/fonts/factor_a/v2/regular.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Factor A';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://www.semrush.com/__static__/fonts/factor_a/v2/medium.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Factor A';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://www.semrush.com/__static__/fonts/factor_a/v2/bold.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Factor A';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("https://www.semrush.com/__static__/fonts/factor_a/v2/black.woff2") format('woff2');
+}
+
+:root {
+  --srf-factor-a-frac: 'frac' off;
+  --srf-factor-a-funk-up-latin: 'ss01' off;
+  --srf-factor-a-curly-arrows: 'ss03' off;
+}
+
+/* If class is applied, update custom property and
+   apply modern font-variant-* when supported */
+.srf-factor-a-frac {
+  --srf-factor-a-frac: 'frac' on;
+}
+
+@supports (font-variant-numeric: diagonal-fractions) {
+  .srf-factor-a-frac {
+    --srf-factor-a-frac: '____';
+
+    font-variant-numeric: diagonal-fractions;
+  }
+}
+
+.srf-factor-a-funk-up-latin {
+  --srf-factor-a-funk-up-latin: 'ss01' on;
+}
+
+.srf-factor-a-curly-arrows {
+  --srf-factor-a-curly-arrows: 'ss03' on;
+}
+
+/* Apply current state of all custom properties
+   whenever a class is being applied */
+.srf-factor-a-frac,
+.srf-factor-a-funk-up-latin,
+.srf-factor-a-curly-arrows {
+  font-feature-settings: var(--srf-factor-a-frac),
+    var(--srf-factor-a-funk-up-latin),
+    var(--srf-factor-a-curly-arrows);
+}

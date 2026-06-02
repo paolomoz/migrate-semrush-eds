@@ -10,7 +10,97 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  getMetadata,
 } from './aem.js';
+
+/**
+ * ── stardust:aem-import overlay engine ──────────────────────────────────
+ * Two modes, driven by whether /templates/<template>.html exists:
+ *   - overlay mode (HTML present): the template's markup replaces the
+ *     authored content; [data-slot] markers are filled from the DA block
+ *     tables; main.dataset.overlay is set so loadSections is skipped
+ *     (the template is the visual spec — a pixel-faithful clone).
+ *   - blocks mode (HTML 404): authored DA content stays and gets standard
+ *     EDS decoration; only the template CSS + chrome theme are activated.
+ * In both modes main.dataset.theme is set (chrome fragment selector).
+ */
+
+/** Read the authored DA block tables into a flat slot map: name -> value cell. */
+function readBlockSlots(main) {
+  const slots = new Map();
+  main.querySelectorAll(':scope > div > div').forEach((block) => {
+    [...block.children].forEach((row) => {
+      const cells = [...row.children];
+      if (cells.length === 2) {
+        const name = cells[0].textContent.trim();
+        if (name) slots.set(name, cells[1]);
+      }
+    });
+  });
+  return slots;
+}
+
+/** Write a DA cell value into a template [data-slot] element, element-typed. */
+function writeSlot(el, cell) {
+  if (!el || !cell) return;
+  const img = cell.querySelector('img');
+  const link = cell.querySelector('a');
+  if (el.tagName === 'IMG' && img) {
+    el.src = img.getAttribute('src');
+    if (img.alt) el.alt = img.alt;
+    el.removeAttribute('srcset');
+    return;
+  }
+  if (el.tagName === 'A') {
+    const txt = cell.textContent.trim();
+    if (txt) el.textContent = txt;
+    if (link) el.setAttribute('href', link.getAttribute('href'));
+    return;
+  }
+  const txt = cell.textContent.trim();
+  if (txt) el.textContent = txt;
+}
+
+/**
+ * Apply the static-page overlay to main.
+ * Returns true if the overlay ran, false otherwise.
+ */
+async function applyTemplateOverlay(main) {
+  const templateName = getMetadata('template');
+  if (!templateName) return false;
+
+  // Always activate the theme — per-theme CSS loads regardless of mode.
+  main.dataset.theme = templateName;
+  const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/styles/${templateName}.css`);
+
+  const slots = readBlockSlots(main);
+
+  let resp;
+  try {
+    resp = await fetch(`${window.hlx.codeBasePath}/templates/${templateName}.html`);
+  } catch (e) {
+    resp = null;
+  }
+  if (!resp || !resp.ok) {
+    // eslint-disable-next-line no-console
+    console.info(`[overlay] no template HTML for "${templateName}" — blocks mode (CSS + chrome only)`);
+    await cssLoaded;
+    return false;
+  }
+
+  const html = await resp.text();
+  const tpl = document.createElement('template');
+  tpl.innerHTML = html;
+  tpl.content.querySelectorAll('[data-slot]').forEach((el) => {
+    const name = el.getAttribute('data-slot');
+    if (slots.has(name)) writeSlot(el, slots.get(name));
+  });
+
+  main.replaceChildren(tpl.content);
+  main.dataset.overlay = templateName;
+  await cssLoaded;
+  return true;
+}
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -135,9 +225,17 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
-    decorateMain(main);
-    document.body.classList.add('appear');
-    await loadSection(main.querySelector('.section'), waitForFirstImage);
+    const overlaid = await applyTemplateOverlay(main);
+    if (overlaid) {
+      // template is the visual spec — only decorate icons, skip block pipeline
+      decorateIcons(main);
+      document.body.classList.add('appear');
+      await waitForFirstImage(main);
+    } else {
+      decorateMain(main);
+      document.body.classList.add('appear');
+      await loadSection(main.querySelector('.section'), waitForFirstImage);
+    }
   }
 
   try {
@@ -158,7 +256,8 @@ async function loadLazy(doc) {
   loadHeader(doc.querySelector('header'));
 
   const main = doc.querySelector('main');
-  await loadSections(main);
+  // overlay mode inlines its own chrome + sections; skip standard decoration
+  if (!main.dataset.overlay) await loadSections(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;

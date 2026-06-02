@@ -1,0 +1,1 @@
+body{min-width:320px}@media(max-width:767px){body{font-size:16px}}.srf-layout-main-content-wrapper{display:grid;grid-area:body;grid-template-areas:"body" "footer";grid-template-rows:1fr max-content}.srf-layout__footer{align-self:end}

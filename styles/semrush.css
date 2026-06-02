@@ -1,0 +1,95 @@
+/*
+ * semrush theme — stardust:aem-import (overlay mode, literal clone)
+ * Loads the captured Semrush stylesheets verbatim, then neutralizes the
+ * AEM boilerplate base so the cloned markup renders pixel-faithfully.
+ *
+ * Asset layout (served from the code bus):
+ *   /semrush/assets/css/*.css   captured Semrush stylesheets (url() refs → ../fonts, ../img)
+ *   /semrush/assets/fonts/*     brand fonts (lazzer, factor_a)
+ *   /semrush/assets/img/*       images, logos, posters
+ *   /semrush/assets/video/*     hero / promo videos
+ */
+
+/* --- captured Semrush stylesheets, in original <link> order --- */
+@import url("/semrush/assets/css/a90901e01356.css");
+@import url("/semrush/assets/css/aab91f8eb027.css");
+@import url("/semrush/assets/css/243ec9a68bb4.css");
+@import url("/semrush/assets/css/8edb3a034741.css");
+@import url("/semrush/assets/css/8f1b04d45ee2.css");
+@import url("/semrush/assets/css/a81daf1d2184.css");
+@import url("/semrush/assets/css/c56af4c44c41.css");
+@import url("/semrush/assets/css/7b7a31e7c623.css");
+@import url("/semrush/assets/css/33ee568f9f1c.css");
+@import url("/semrush/assets/css/872bb169d335.css");
+
+/* captured inline critical CSS (was <style> in the live <head>) */
+@import url("/semrush/assets/css/inline.css");
+
+/* --- neutralize the AEM boilerplate skeleton so the clone owns layout --- */
+
+/* EDS chrome blocks are unused — the clone inlines its own banner/header/footer */
+header.header-wrapper,
+footer.footer-wrapper {
+  display: none !important;
+}
+
+/* boilerplate constrains main width / padding and styles bare elements;
+   the cloned Semrush markup is full-bleed and self-styled */
+body {
+  display: block;
+  margin: 0;
+  font-family: Inter, -apple-system, "Segoe UI", roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background: #fff;
+}
+
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+main > div {
+  margin: 0;
+  max-width: none;
+}
+
+/* boilerplate sets generic heading/paragraph sizes scoped to `main h1` etc.
+   — reset so the captured Semrush class styles take over cleanly */
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6,
+main p {
+  margin: revert;
+  font-size: revert;
+  line-height: revert;
+  font-family: revert;
+  font-weight: revert;
+  letter-spacing: revert;
+  scroll-margin: revert;
+}
+
+main img {
+  width: revert;
+  height: revert;
+}
+
+main a:any-link {
+  color: inherit;
+}
+
+main .button-wrapper,
+main .button:any-link {
+  /* defuse boilerplate button decoration if it ever fires on cloned anchors */
+  margin: revert;
+  padding: revert;
+  font: revert;
+  background: revert;
+  border-radius: revert;
+  text-decoration: revert;
+}
