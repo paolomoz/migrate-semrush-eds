@@ -1,27 +1,72 @@
+/* cards — base + semrush variants (solutions, resources) */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards-card--linked { cursor: pointer; }
+
+.cards > ul > li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 50px rgb(24 30 21 / 10%);
+  border-color: var(--lav-200);
 }
 
-.cards .cards-card-image {
-  line-height: 0;
+.cards .cards-card-image { line-height: 0; }
+.cards .cards-card-image img { width: 100%; height: auto; display: block; object-fit: cover; }
+.cards .cards-card-body { padding: 22px 22px 26px; }
+
+.cards .cards-card-body h3 {
+  font-size: 21px;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
 }
 
-.cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.cards .cards-card-body p { font-size: 15px; color: var(--ink-soft); margin: 0 0 12px; }
+.cards .cards-card-body a { color: var(--ink); font-weight: 600; text-decoration: none; }
+
+/* eyebrow = first paragraph in the body (category label) */
+.cards .cards-card-body > p:first-child {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+/* variant: solutions — image-led product cards, 3-up */
+.cards.solutions > ul { grid-template-columns: repeat(3, 1fr); }
+.cards.solutions .cards-card-image img { aspect-ratio: 16 / 11; }
+.cards.solutions .cards-card-body { padding: 20px 22px 24px; }
+.cards.solutions .cards-card-body h3 { font-size: 22px; }
+
+/* variant: resources — editorial article cards, 4-up */
+.cards.resources > ul { grid-template-columns: repeat(4, 1fr); }
+.cards.resources .cards-card-image img { aspect-ratio: 3 / 2; }
+.cards.resources .cards-card-body h3 { font-size: 17px; line-height: 1.25; }
+.cards.resources .cards-card-body p { font-size: 14px; }
+
+@media (width <= 1000px) {
+  .cards.solutions > ul { grid-template-columns: repeat(2, 1fr); }
+  .cards.resources > ul { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (width <= 600px) {
+  .cards.solutions > ul,
+  .cards.resources > ul { grid-template-columns: 1fr; }
 }

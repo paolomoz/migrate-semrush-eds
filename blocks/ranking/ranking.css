@@ -1,0 +1,44 @@
+/* ranking — leaderboard (lives on a dark section) */
+.ranking.block {
+  background: rgb(255 255 255 / 4%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 20px;
+  padding: 14px 28px;
+}
+
+.ranking-list { list-style: none; margin: 0; padding: 0; counter-reset: rank; }
+
+.ranking-row {
+  display: grid;
+  grid-template-columns: 32px 150px 1fr 52px;
+  align-items: center;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+.ranking-row:last-child { border-bottom: 0; }
+
+.ranking-rank { font-family: var(--display); color: rgb(255 255 255 / 45%); font-size: 14px; }
+.ranking-brand { font-weight: 600; color: #fff; font-size: 16px; }
+
+.ranking-bar {
+  height: 8px;
+  background: rgb(255 255 255 / 8%);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.ranking-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--lav), #8ce0c0);
+}
+
+.ranking-share { text-align: right; font-family: var(--display); font-weight: 600; color: #fff; }
+
+@media (width <= 700px) {
+  .ranking-row { grid-template-columns: 24px 1fr 44px; }
+  .ranking-bar { display: none; }
+}

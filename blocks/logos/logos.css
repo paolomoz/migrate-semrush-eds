@@ -1,0 +1,41 @@
+/* logos — marquee trust strip */
+.logos-wrapper { max-width: none !important; }
+.section.logos-container { padding-block: 28px; }
+
+.logos.block { overflow: hidden; }
+
+.logos-viewport {
+  display: flex;
+  width: max-content;
+  animation: logos-scroll 48s linear infinite;
+}
+
+.logos-track { display: flex; align-items: center; }
+
+.logos-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 38px;
+  flex: none;
+}
+
+.logos-item img {
+  height: 26px;
+  width: auto;
+  opacity: 0.5;
+  filter: grayscale(1);
+  transition: opacity .2s ease, filter .2s ease;
+}
+
+.logos.block:hover .logos-viewport { animation-play-state: paused; }
+.logos-item:hover img { opacity: 1; filter: none; }
+
+@keyframes logos-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logos-viewport { animation: none; flex-wrap: wrap; justify-content: center; }
+}

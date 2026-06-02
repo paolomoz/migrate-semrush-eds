@@ -1,95 +1,138 @@
 /*
- * semrush theme — stardust:aem-import (overlay mode, literal clone)
- * Loads the captured Semrush stylesheets verbatim, then neutralizes the
- * AEM boilerplate base so the cloned markup renders pixel-faithfully.
- *
- * Asset layout (served from the code bus):
- *   /semrush/assets/css/*.css   captured Semrush stylesheets (url() refs → ../fonts, ../img)
- *   /semrush/assets/fonts/*     brand fonts (lazzer, factor_a)
- *   /semrush/assets/img/*       images, logos, posters
- *   /semrush/assets/video/*     hero / promo videos
+ * semrush brand theme — genuine EDS blocks (David's model)
+ * Loads only the brand @font-face files from the capture; everything else is
+ * authored fresh so the page renders from clean, intuitive block content.
  */
 
-/* --- captured Semrush stylesheets, in original <link> order --- */
-@import url("/semrush/assets/css/a90901e01356.css");
-@import url("/semrush/assets/css/aab91f8eb027.css");
-@import url("/semrush/assets/css/243ec9a68bb4.css");
-@import url("/semrush/assets/css/8edb3a034741.css");
-@import url("/semrush/assets/css/8f1b04d45ee2.css");
-@import url("/semrush/assets/css/a81daf1d2184.css");
-@import url("/semrush/assets/css/c56af4c44c41.css");
-@import url("/semrush/assets/css/7b7a31e7c623.css");
-@import url("/semrush/assets/css/33ee568f9f1c.css");
-@import url("/semrush/assets/css/872bb169d335.css");
+/* brand fonts only (lazzer = display, factor_a = secondary; url()→../fonts) */
+@import url("/semrush/assets/css/aab91f8eb027.css"); /* Lazzer */
+@import url("/semrush/assets/css/243ec9a68bb4.css"); /* Factor A */
 
-/* captured inline critical CSS (was <style> in the live <head>) */
-@import url("/semrush/assets/css/inline.css");
+:root {
+  /* brand tokens (sampled from semrush.com) */
+  --ink: #181e15;
+  --ink-soft: #565b52;
+  --paper: #fff;
+  --paper-2: #f4f4f2;
+  --paper-3: #ecece8;
+  --lav: #c190ff;
+  --lav-100: #f3ecff;
+  --lav-200: #e3d2ff;
+  --line: #e6e6e2;
+  --stat-grey: #d1d2d5;
+  --dark: #181e15;
 
-/* --- neutralize the AEM boilerplate skeleton so the clone owns layout --- */
+  --display: "Lazzer", "Factor A", system-ui, sans-serif;
+  --body: "Inter", -apple-system, "Segoe UI", roboto, sans-serif;
 
-/* EDS chrome blocks are unused — the clone inlines its own banner/header/footer */
-header.header-wrapper,
-footer.footer-wrapper {
-  display: none !important;
+  --content-width: 1440px;
+  --pad-x: 32px;
+  --radius: 24px;
+  --radius-pill: 100px;
+
+  /* override boilerplate vars so its base rules inherit brand styling */
+  --body-font-family: var(--body);
+  --heading-font-family: var(--display);
+  --background-color: #fff;
+  --text-color: var(--ink);
+  --link-color: var(--ink);
+  --nav-height: 64px;
 }
 
-/* boilerplate constrains main width / padding and styles bare elements;
-   the cloned Semrush markup is full-bleed and self-styled */
+/* ---------- base ---------- */
 body {
-  display: block;
-  margin: 0;
-  font-family: Inter, -apple-system, "Segoe UI", roboto, sans-serif;
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+main { margin: 0; }
+
+main .section {
+  padding: 72px var(--pad-x);
+}
+
+main .section > div {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+/* ---------- default-content typography ---------- */
+main h1, main h2, main h3, main h4 {
+  font-family: var(--display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 0.4em;
+}
+
+main h1 { font-size: clamp(40px, 6vw, 84px); }
+main h2 { font-size: clamp(32px, 4.4vw, 60px); }
+main h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.02em; }
+main h4 { font-size: 20px; }
+
+main p { margin: 0 0 1em; font-size: 18px; color: var(--ink-soft); }
+main a { color: inherit; }
+
+/* eyebrow: a short paragraph that immediately precedes a heading */
+main .default-content-wrapper > p:first-child:has(+ h1),
+main .default-content-wrapper > p:first-child:has(+ h2),
+main .default-content-wrapper > p:first-child:has(+ h3) {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+
+/* centered section intro (use Section Metadata style: centered) */
+main .section.centered .default-content-wrapper { text-align: center; max-width: 860px; margin-inline: auto; }
+main .section.centered .default-content-wrapper > p:first-child:has(+ h2) { display: inline-block; }
+
+/* ---------- buttons (EDS decorateButtons output) ---------- */
+main .button-wrapper { margin: 18px 0 0; }
+main a.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-weight: 600;
   font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-  background: #fff;
+  line-height: 1;
+  padding: 16px 32px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: transform .15s ease, background-color .15s ease, opacity .15s ease;
+  white-space: nowrap;
 }
+main a.button.primary { background: var(--lav); color: var(--ink); }
+main a.button.primary:hover { background: #b07cff; transform: translateY(-1px); }
+main a.button.secondary {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+main a.button.secondary:hover { background: var(--ink); color: #fff; }
 
-main {
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: none !important;
+/* ---------- substrates ---------- */
+main .section.dark {
+  background: var(--dark);
+  color: #fff;
 }
+main .section.dark h1, main .section.dark h2, main .section.dark h3 { color: #fff; }
+main .section.dark p { color: rgb(255 255 255 / 70%); }
+main .section.dark a.button.secondary { border-color: rgb(255 255 255 / 40%); color: #fff; }
+main .section.dark a.button.secondary:hover { background: #fff; color: var(--ink); }
 
-main > div {
-  margin: 0;
-  max-width: none;
-}
+main .section.stone { background: var(--paper-2); }
 
-/* boilerplate sets generic heading/paragraph sizes scoped to `main h1` etc.
-   — reset so the captured Semrush class styles take over cleanly */
-main h1,
-main h2,
-main h3,
-main h4,
-main h5,
-main h6,
-main p {
-  margin: revert;
-  font-size: revert;
-  line-height: revert;
-  font-family: revert;
-  font-weight: revert;
-  letter-spacing: revert;
-  scroll-margin: revert;
-}
+/* tighten the gap when a section is only an intro followed by a block */
+main .section.compact { padding-block: 40px; }
 
-main img {
-  width: revert;
-  height: revert;
-}
-
-main a:any-link {
-  color: inherit;
-}
-
-main .button-wrapper,
-main .button:any-link {
-  /* defuse boilerplate button decoration if it ever fires on cloned anchors */
-  margin: revert;
-  padding: revert;
-  font: revert;
-  background: revert;
-  border-radius: revert;
-  text-decoration: revert;
-}
+/* hide empty EDS sections */
+main .section:not(:has(> div)) { display: none; }

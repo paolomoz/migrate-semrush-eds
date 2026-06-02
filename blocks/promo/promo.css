@@ -1,0 +1,42 @@
+/* promo — large feature card */
+.promo.block {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+  gap: 56px;
+  border-radius: 28px;
+  padding: 64px;
+  overflow: hidden;
+}
+
+.promo-copy h2, .promo-copy h3 {
+  font-size: clamp(30px, 3.4vw, 52px);
+  margin: 0 0 18px;
+  letter-spacing: -0.03em;
+}
+
+.promo-copy p { font-size: 19px; margin: 0 0 28px; }
+.promo-copy .button-wrapper { margin: 0; }
+
+.promo-media { border-radius: 18px; overflow: hidden; }
+.promo-media picture, .promo-media img { display: block; width: 100%; height: auto; }
+.promo-media:empty { display: none; }
+
+/* variant: Semrush One (lavender) */
+.promo.semrush-one {
+  background: linear-gradient(135deg, #efe6ff 0%, #e4d4ff 45%, #d9c4ff 100%);
+}
+
+/* variant: Enterprise (dark) */
+.promo.enterprise {
+  background: radial-gradient(120% 140% at 80% 10%, #2a2f26 0%, var(--dark) 60%);
+  color: #fff;
+}
+
+.promo.enterprise h2, .promo.enterprise h3 { color: #fff; }
+.promo.enterprise p { color: rgb(255 255 255 / 72%); }
+.promo.enterprise .button.primary { background: var(--lav); color: var(--ink); }
+
+@media (width <= 900px) {
+  .promo.block { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; }
+}
