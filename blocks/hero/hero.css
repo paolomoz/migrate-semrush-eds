@@ -4,10 +4,9 @@
 }
 
 .section.hero-container {
+  /* matched to clone spec: iridescent SVG, no tint overlay */
   padding: 0;
-  background:
-    radial-gradient(120% 120% at 50% -10%, var(--lav-100) 0%, #fff 55%),
-    url("/semrush/assets/img/c72969b039ed.svg") center top / 100% auto no-repeat;
+  background: url("/semrush/assets/img/c72969b039ed.svg") 2px calc(50% - 20px) / auto no-repeat;
 }
 
 .hero.block {
@@ -21,21 +20,27 @@
 }
 
 .hero-copy {
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 .hero.block h1 {
-  font-size: clamp(44px, 6vw, 84px);
+  font-size: 84px;
+  font-weight: 600;
+  line-height: 1.1;
   letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin: 0 0 22px;
+  color: var(--ink);
+  margin: 0 0 20px;
 }
 
 .hero-sub {
-  font-size: clamp(17px, 1.5vw, 21px);
-  color: var(--ink-soft);
-  max-width: 620px;
-  margin: 0 auto 32px;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 540px;
+  margin: 0 auto 28px;
 }
 
 /* search bar */
@@ -99,16 +104,15 @@
   background: #b07cff;
 }
 
-/* product media */
+/* product media — matched to clone spec (1114×627, r12, subtle shadow) */
 .hero-media {
   width: 100%;
-  max-width: 1120px;
-  margin: 56px auto -120px;
-  border-radius: var(--radius);
+  max-width: 1114px;
+  margin: 52px auto 0;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 40px 120px rgb(24 30 21 / 14%);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 5%);
   background: #fff;
-  border: 1px solid rgb(255 255 255 / 60%);
 }
 
 .hero-media picture, .hero-media img {
