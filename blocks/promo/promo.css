@@ -44,22 +44,46 @@
   background: linear-gradient(135deg, #efe6ff 0%, #e4d4ff 45%, #d9c4ff 100%);
 }
 
-/* variant: Enterprise (dark) */
+/* variant: Enterprise (dark) — matched to clone spec */
 .promo.enterprise {
-  background: radial-gradient(120% 140% at 80% 10%, #2a2f26 0%, var(--dark) 60%);
+  background: #000 url("/semrush/assets/img/08c77ba8246d.webp") center / cover no-repeat;
+  border-radius: 5px;
   color: #fff;
+  grid-template-columns: 1fr 700px;
+  gap: 28px;
 }
 
 .promo.enterprise h2, .promo.enterprise h3 {
   color: #fff;
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
 }
 
 .promo.enterprise p {
-  color: rgb(255 255 255 / 72%);
+  color: rgb(255 255 255 / 78%);
+  font-size: 16px;
 }
 
+/* product media flush to the card's right edge, rounded on the left only */
+.promo.enterprise .promo-media {
+  margin: 0 -64px 0 0;
+  border-radius: 12px 0 0 12px;
+  box-shadow: inset 0 4px 15px rgb(0 0 0 / 5%);
+  justify-self: end;
+  width: 100%;
+  max-width: none;
+}
+
+/* ghost pill (transparent, white) */
 .promo.enterprise .button.primary {
-  background: var(--lav);
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgb(255 255 255 / 45%);
+}
+
+.promo.enterprise .button.primary:hover {
+  background: #fff;
   color: var(--ink);
 }
 
