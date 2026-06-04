@@ -7,11 +7,26 @@
   background: var(--dark) url("/semrush/assets/img/293f1f93c0a9.svg") 0 100% / 100% auto no-repeat;
 }
 
-/* the AI-visibility intro is centered with an oversized display heading */
+/* the AI-visibility intro is centered with an oversized display heading,
+   preceded by the sparkle medallion (matches the clone's vertical rhythm) */
 .section.ranking-container .default-content-wrapper {
   text-align: center;
   max-width: 760px;
   margin-inline: auto;
+}
+
+.section.ranking-container .default-content-wrapper::before {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 36px;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 14%);
+  background:
+    radial-gradient(circle at 50% 40%, rgb(255 255 255 / 10%), transparent 70%),
+    #1c211a
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2c.4 4.7 2.3 6.6 7 7-4.7.4-6.6 2.3-7 7-.4-4.7-2.3-6.6-7-7 4.7-.4 6.6-2.3 7-7z"/><path d="M19 3c.15 1.6.9 2.35 2.5 2.5-1.6.15-2.35.9-2.5 2.5-.15-1.6-.9-2.35-2.5-2.5C18.1 5.35 18.85 4.6 19 3z"/></svg>') center / 42px no-repeat;
 }
 
 .section.ranking-container .default-content-wrapper h2 {
@@ -19,7 +34,16 @@
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
+}
+
+.section.ranking-container .default-content-wrapper p {
+  font-size: 19px;
+}
+
+/* push the leaderboard card down to the clone's vertical position */
+.section.ranking-container .ranking-wrapper {
+  margin-top: 40px;
 }
 
 .section.ranking-container .default-content-wrapper > p:first-child:has(+ h2) {
@@ -61,7 +85,7 @@
   grid-template-columns: 160px 44px 1fr;
   align-items: center;
   gap: 16px;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 .ranking-brand {

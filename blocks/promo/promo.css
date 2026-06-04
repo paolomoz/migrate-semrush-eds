@@ -39,9 +39,46 @@
   display: none;
 }
 
-/* variant: Semrush One (lavender) */
+/* variant: Semrush One (lavender) — matched to clone spec */
 .promo.semrush-one {
-  background: linear-gradient(135deg, #efe6ff 0%, #e4d4ff 45%, #d9c4ff 100%);
+  background: linear-gradient(120deg, #e6d8ff 0%, #d7c2ff 52%, #c9b1ff 100%);
+  border-radius: 12px;
+  grid-template-columns: 1fr 700px;
+  gap: 28px;
+}
+
+.promo.semrush-one h2, .promo.semrush-one h3 {
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.promo.semrush-one p {
+  font-size: 16px;
+  color: rgb(24 30 21 / 80%);
+}
+
+/* product media flush to the card's right edge, rounded on the left only */
+.promo.semrush-one .promo-media {
+  margin: 0 -64px 0 0;
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 5%);
+  justify-self: end;
+  width: 100%;
+  max-width: none;
+}
+
+/* light ghost pill */
+.promo.semrush-one .button.primary {
+  background: #fff;
+  color: var(--ink);
+  border: 1.5px solid rgb(24 30 21 / 14%);
+}
+
+.promo.semrush-one .button.primary:hover {
+  background: var(--ink);
+  color: #fff;
 }
 
 /* variant: Enterprise (dark) — matched to clone spec */

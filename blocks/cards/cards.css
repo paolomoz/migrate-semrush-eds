@@ -88,13 +88,45 @@
   font-size: 22px;
 }
 
-/* variant: resources — editorial article cards, 4-up */
+/* variant: resources — borderless editorial cards, single overflow row
+   (clone is a horizontal slider of large 430px cards) */
+.section:has(.cards.resources) {
+  padding-block: 120px;
+}
+
+.section:has(.cards.resources) .default-content-wrapper {
+  margin-bottom: 20px;
+}
+
 .cards.resources > ul {
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  grid-template-columns: none;
+  gap: 24px;
+  overflow: hidden;
+  align-items: start;
+}
+
+.cards.resources > ul > li {
+  flex: 0 0 430px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.cards.resources > ul > li:hover {
+  transform: none;
+  box-shadow: none;
+  border: 0;
 }
 
 .cards.resources .cards-card-image img {
   aspect-ratio: 3 / 2;
+  border-radius: 8px;
+}
+
+.cards.resources .cards-card-body {
+  padding: 16px 2px 0;
 }
 
 .cards.resources .cards-card-body h3 {
