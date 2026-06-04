@@ -1,0 +1,5 @@
+/* sf-section — paint is owned entirely by the captured Semrush CSS
+   (styles/snowflake.css). The block only needs to not interfere. */
+.sf-section.block {
+  display: block;
+}

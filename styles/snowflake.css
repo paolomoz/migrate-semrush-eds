@@ -1,0 +1,44 @@
+/* snowflake theme — static-to-EDS (block-level): the captured Semrush CSS,
+ * verbatim, styling each sf-section block's real markup (pixel-perfect). */
+
+/* captured Semrush stylesheets, in original <link> order */
+@import url("/semrush/assets/css/a90901e01356.css");
+@import url("/semrush/assets/css/aab91f8eb027.css");
+@import url("/semrush/assets/css/243ec9a68bb4.css");
+@import url("/semrush/assets/css/8edb3a034741.css");
+@import url("/semrush/assets/css/8f1b04d45ee2.css");
+@import url("/semrush/assets/css/a81daf1d2184.css");
+@import url("/semrush/assets/css/c56af4c44c41.css");
+@import url("/semrush/assets/css/7b7a31e7c623.css");
+@import url("/semrush/assets/css/33ee568f9f1c.css");
+@import url("/semrush/assets/css/872bb169d335.css");
+@import url("/semrush/assets/css/inline.css");
+
+/* EDS chrome unused — the page renders banner/header/footer as sf-section blocks */
+header.header-wrapper,
+footer.footer-wrapper {
+  display: none !important;
+}
+
+body {
+  display: block;
+  margin: 0;
+}
+
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+main > div,
+main .section {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+main .section > div {
+  max-width: none;
+  margin: 0;
+}
