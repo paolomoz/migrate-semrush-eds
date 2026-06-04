@@ -48,8 +48,15 @@
   margin: 0 0 auto;
 }
 
-.tm-text::before { content: "“"; color: var(--lav); }
-.tm-text::after { content: "”"; color: var(--lav); }
+.tm-text::before {
+  content: "“";
+  color: var(--lav);
+}
+
+.tm-text::after {
+  content: "”";
+  color: var(--lav);
+}
 
 .tm-author {
   display: flex;
@@ -86,7 +93,6 @@
   width: 55%;
   height: 65%;
   background: repeating-linear-gradient(135deg, transparent 0 6px, rgb(193 144 255 / 55%) 6px 8px);
-  -webkit-mask: linear-gradient(225deg, #000, transparent 72%);
   mask: linear-gradient(225deg, #000, transparent 72%);
 }
 
